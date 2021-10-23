@@ -55,17 +55,17 @@ function setup() {
   restart.scale = 0.6;
   restart.visible = false
   
-  trex = createSprite(50,height-200,20,50);
+  trex = createSprite(50,height-80,20,50);
   trex.addAnimation("running", trex_correndo);
   trex.addAnimation("collided" , trex_colidiu)
   trex.scale = 0.5;
   
-  solo = createSprite(200,height-150,400,20);
+  solo = createSprite(200,height-30,400,20);
   solo.addImage("ground",imagemdosolo);
   solo.x = solo.width /2;
  
   
-  soloinvisivel = createSprite(200,height-140,400,10);
+  soloinvisivel = createSprite(200,height-20,400,10);
   soloinvisivel.visible = false;
   
   grupodenuvens = new Group();
@@ -100,7 +100,7 @@ function draw() {
   
 
   
-  if(touches.length > 0) {
+  if(touches.length > 0 && trex.y  >= height-120) {
     trex.velocityY = -13;
     estadojogo = "jogar";
     somdepular.play()
@@ -140,12 +140,6 @@ function draw() {
     solo.velocityX =0;
     restart.visible = true;
     gameover.visible = true;
-    
-    if(touches.length>0) {      
-      reset();
-      touches = []
-    }
-    
   }
   
   
@@ -154,7 +148,7 @@ function draw() {
 
 function gerarObstaculos(){
  if (frameCount % 60 === 0){
-   var obstaculo = createSprite(600,height-195,10,40);
+   var obstaculo = createSprite(605,height-50,10,40);
   obstaculo.velocityX = -6;
    
  
@@ -188,7 +182,7 @@ function gerarObstaculos(){
 function gerarNuvens() {
   //escreva o código aqui para gerar as nuvens 
   if (frameCount % 60 === 0) {
-    nuvem = createSprite(width+20,height-300,40,10);
+    nuvem = createSprite(windowWidth,100,40,10);
     nuvem.y = Math.round(random(10,60));
     nuvem.addImage(imagemdanuvem);
     nuvem.scale = 0.5;
