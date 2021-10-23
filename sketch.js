@@ -100,7 +100,7 @@ function draw() {
   
 
   
-  if(touches.length > 0 && trex.y  >= height-120) {
+  if(touches.length > 0) {
     trex.velocityY = -13;
     estadojogo = "jogar";
     somdepular.play()
